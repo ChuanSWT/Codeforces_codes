@@ -1,0 +1,98 @@
+    #include<iostream>
+    #include<vector>
+    #include<string>
+    #include<map>
+    #include<unordered_map>
+    #include<cmath>
+    #include<algorithm>
+    #include<set>
+    #include<tuple>
+    #include<cmath>
+    #include<queue>
+    using namespace std;
+    void compete_solution();
+    template <typename T>
+    void print(const std::vector<T>& vec) {
+    for (auto element : vec) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+    }
+    int gcd(int x, int y)
+    {
+    if (y == 0)
+        return x;
+    return gcd(y, x % y);
+    }   
+    int main()
+    {
+    ios_base::sync_with_stdio(false); 
+    cin.tie(NULL) ;
+        int roundc;
+        cin >> roundc;
+        for (int ic = 0; ic < roundc; ++ic)
+        {
+            compete_solution();
+        }
+        return 0;
+    }
+    class meth
+    {
+        public:
+        vector<vector<int>> edges;
+        int maxv;
+        meth(vector<int> nums):edges(nums.size()+1,vector<int>())
+        {   
+            maxv=0;
+            for(int &x:nums)
+            --x;
+            for(int i=0;i<nums.size();++i)
+            {
+                edges[nums[i]].push_back(i+1);
+            }
+            /*for(auto a:edges)
+            {
+                for(auto b:a)
+                cout<<b<<" ";
+                cout<<endl;
+            }*/
+        }
+        int cal()
+        {
+            for(int p:edges[0])
+            {
+                dfs(1,p);
+            }
+        }
+        void dfs(int i,int node)
+        {
+            maxv=max(maxv,i);
+            for(int x:edges[node])
+            {
+                dfs(i+1,x);
+            }
+        }
+    };
+    void compete_solution()
+    {
+        int n;
+        cin>>n;
+        vector<int> nums(n-1,0);
+        for(int& x:nums)
+        cin>>x;
+        meth test(nums);
+        test.cal();
+        int length=test.maxv;
+        int nodes=n-1;
+        //cout<<(nodes-length)/2<<endl;
+        if(length<=nodes)
+        cout<<nodes/2<<endl;
+        else
+        cout<<nodes-length<<endl;
+        //cout<<min(nodes/2,(nodes-length)/2)<<endl;
+        //cout<<length<<endl;
+
+        
+
+        
+    }

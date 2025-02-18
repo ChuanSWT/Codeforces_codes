@@ -1,0 +1,90 @@
+    #include<iostream>
+    #include<vector>
+    #include<string>
+    #include<map>
+    #include<unordered_map>
+    #include<cmath>
+    #include<algorithm>
+    #include<set>
+    #include<tuple>
+    #include<cmath>
+    #include<queue>
+    using namespace std;
+    void compete_solution();
+
+    template <typename T>
+    void print(const std::vector<T>& vec) {
+    for (auto element : vec) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+    }
+
+    int gcd(int x, int y)
+    {
+    if (y == 0)
+        return x;
+    return gcd(y, x % y);
+    }   
+    int main()
+    {
+    ios_base::sync_with_stdio(false); 
+    cin.tie(NULL) ;
+        int roundc;
+        cin >> roundc;
+        for (int ic = 0; ic < roundc; ++ic)
+        {
+            compete_solution();
+        }
+        return 0;
+    }
+    bool is_small(char c)
+    {
+        return c>='a'&&c<='z';
+    }
+    void compete_solution()
+    {
+        //int n;
+        //cin>>n;
+        //b删最右边，B删最左边
+        string s;
+        cin>>s;
+        vector<int> mark(s.size(),0);
+        int cur=0;
+        for(int i=mark.size()-1;i>=0;--i)
+        {
+            if(s[i]=='b')
+            ++cur;
+            else
+            {
+                if(cur&&is_small(s[i]))
+                {
+                    --cur;
+                    mark[i]=1;
+                }
+            }
+        }
+        cur=0;
+        for(int i=mark.size()-1;i>=0;--i)
+        {
+            if(s[i]=='B')
+            ++cur;
+            else
+            {
+                if(cur&&!is_small(s[i]))
+                {
+                    --cur;
+                    mark[i]=1;
+                }
+            }
+        }
+        for(int i=0;i<s.size();++i)
+        if(s[i]!='b'&&s[i]!='B'&&mark[i]==0)
+        cout<<s[i];
+        cout<<endl;
+
+
+        
+
+        
+    }
