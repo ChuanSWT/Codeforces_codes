@@ -70,8 +70,24 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
+    string s;
+    cin>>s;
+    vector<int> nums;
+    for(char c:s){
+        nums.push_back(c-'0');
+    }
+    for(int i=0;i<nums.size();++i){
+        int limit=9-i;
+        for(int j=i;j<nums.size();++j){
+            if(nums[j]<nums[i]&&nums[j]>=limit){
+                swap(nums[i],nums[j]);
+            }
+        }
+    }
+    for(int x:nums){
+        cout<<x;
+    }
+    cout<<endl;
     
 
 

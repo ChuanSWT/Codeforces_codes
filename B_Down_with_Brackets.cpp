@@ -70,9 +70,23 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    string s;
+    cin>>s;
+    //(())
+    //(()())
+    int cnt=1;
+    for(int i=1;i<s.size();++i){
+        if(s[i]==')')
+            --cnt;
+        else{
+            ++cnt;
+        }
+        if(s[i-1]==')'&&s[i]=='('&&cnt==1){
+            cout<<"YES"<<endl;
+            return;
+        }
+    }
+   cout<<"NO"<<endl; 
 
 
 

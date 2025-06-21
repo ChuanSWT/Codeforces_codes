@@ -72,11 +72,39 @@ void compete_solution()
 {
     int n;
     cin >> n;
+    //分成两部分，一部分的min和另一部分的gcd相等
+    //为了实现这一点 min那部分一定就有原数组最小值
+    //尝试 找到所有倍数 然后集合gcd
+
+    vector<int> nums=cin_nums(n);
+
+    int mnv=*min_element(nums.begin(),nums.end());
     
-
-
-
-
-
-    
+    vector<int> newNums;
+    bool f=true;
+    for(int x:nums){
+        if(x%mnv)
+            continue;
+        if(x==mnv){
+            if(!f){
+                newNums.push_back(x/mnv);
+            }
+            f=false;
+            continue;
+        }
+        newNums.push_back(x/mnv);
+    }
+    if(newNums.empty()){
+        cout<<"No"<<endl;
+        return;
+    }
+    int cur=newNums[0];
+    for(int i=1;i<newNums.size();++i){
+        cur=gcd(cur,newNums[i]);
+    }
+    if(cur!=1){
+        cout<<"No"<<endl;
+        return;
+    }
+    cout<<"Yes"<<endl;
 }

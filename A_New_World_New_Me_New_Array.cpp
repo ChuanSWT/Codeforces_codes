@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -70,13 +69,12 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,k,p;
+    cin >> n>>k>>p;
+    if(abs(p)*n<abs(k)){
+        cout<<-1<<endl;
+        return;
+    }
+    cout<<abs(k)/abs(p)+(abs(k)%abs(p)!=0)<<endl;
 
-
-
-
-
-    
 }

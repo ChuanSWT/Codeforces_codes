@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -65,18 +64,61 @@ vector<vector<int>> cin_matrix(int n, int m)
     return ans;
 }
 
-
-
-
+int cal(string s){
+    int cur=0;
+    for(int i=0;i<s.size();++i){
+        char c=s[i];
+        if(c=='L'){
+            --cur;
+        }
+        else{
+            ++cur;
+        }
+        if(cur==0){
+            return i+1;
+        }
+    }
+    return -1;
+}
+int check_to_start(string s,int start){
+    int cur=start;
+    for(int i=0;i<s.size();++i){
+        char c=s[i];
+        if(c=='L'){
+            cur-=1;
+        }
+        else{
+            cur+=1;
+        }
+        if(cur==0){
+            return i+1;
+        }
+    }
+    return -1;
+}
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
-
-
-
-
-
-    
+    int n,start,k;
+    cin>>n>>start>>k;
+    string s;
+    cin>>s;
+    int ans=0;
+    if(start!=0){
+        int to_start_rst=check_to_start(s,start);
+        if(to_start_rst==-1){
+            cout<<0<<endl;
+            return;
+        }
+        else{
+            ans+=1;
+            k-=to_start_rst;
+        }
+    }
+    int min_loop=cal(s);
+    if(min_loop==-1){
+        cout<<ans<<endl;
+        return;
+    }
+    ans+=k/min_loop;
+    cout<<ans<<endl;
 }

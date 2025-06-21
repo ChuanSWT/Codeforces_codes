@@ -70,9 +70,14 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,m,p,q;
+    cin >> n>>m>>p>>q;
+    //
+    if(n/p*q!=m&&n%p==0){
+        cout<<"NO"<<endl;
+        return;
+    }
+    cout<<"YES"<<endl;
 
 
 

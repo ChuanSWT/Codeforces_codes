@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -67,16 +66,56 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
+vector<int> make(int n){
+    vector<int> nums;
+    while(n){
+        for(int i=2;;++i){
+            int sum=i*(i-1)/2;
+            if(sum>n){
+                nums.push_back(i-1);
+                n-=(i-1)*(i-2)/2;
+                break;
+            }
+        }
+    }
+    return nums;
 
+}
 void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
-
-    
+    vector<vector<int>> points(500,vector<int>(2,0));
+    for(int i=0;i<points.size();++i){
+        points[i][1]=i;
+    }
+    vector<int> rst=make(n);
+    int cur=0;
+    for(int i=0;i<points.size();++i){
+        if(rst.empty()){
+            for(int j=i;j<points.size();++j){
+                points[j][0]=cur;
+                ++cur;
+                
+            }
+            break;
+        }
+        points[i][0]=cur;
+        rst.back()-=1;
+        if(rst.back()==0){
+            rst.pop_back();
+            ++cur;
+        }
+        if(rst.empty()){
+            for(int j=i+1;j<points.size();++j){
+                points[j][0]=cur;
+                ++cur;
+                
+            }
+            break;
+        }
+    }
+    cout<<points.size()<<endl;
+    for(auto arr:points)
+        print(arr);
 }

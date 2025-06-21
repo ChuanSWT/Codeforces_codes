@@ -72,11 +72,51 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums=cin_nums(n);
+    vector<vector<int>> ans;
+    map<int,int> mp;
+    for(int x:nums)
+        ++mp[x];
+    if(mp[0]==0){
+        cout<<1<<endl;
+        cout<<1<<" "<<n<<endl;
+        return;
+    }
+    if(nums[0]==0&&nums[n-1]==0){
+        ans.push_back({1,2});
+        ans.push_back({2,n-1});
+        ans.push_back({1,2});
+    }
+    else{
+        if(nums[0]==0){
+            int index=0;
+            for(int i=0;i<nums.size();++i){
+                if(nums[i]==0)
+                    index=i;
+            }
+            if(index==0)
+                index=1;
+            ans.push_back({1,index+1});
+            int length=index+1;
+            ans.push_back({1,n-length+1});
+        }
+        else{
+            int index=n-1;
+            for(int i=n-1;i>=0;--i){
+                if(nums[i]==0)
+                    index=i;
+            }
+            if(index==n-1)
+                --index;
+            ans.push_back({index+1,n});
+            int length=n-index;
+            ans.push_back({1,n-length+1});
+        }
 
-
-
-
+    }
+    cout<<ans.size()<<endl;
+    for(auto arr:ans)
+        print(arr);
 
     
 }

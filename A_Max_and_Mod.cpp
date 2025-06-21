@@ -66,17 +66,52 @@ vector<vector<int>> cin_matrix(int n, int m)
 }
 
 
-
-
+bool quickCheck(vector<int>&path){
+    if(path.size()<=1)
+        return true;
+    int n=path.size();
+    int mx=max(path[n-1],path[n-2]);
+    int target=n-1;
+    if(mx%n!=target){
+        return false;
+    }
+    return true;
+}
 void compete_solution()
 {
     int n;
     cin >> n;
+    if(n%2==0){
+        cout<<-1<<endl;
+        return;
+    }
+    vector<int> ans={n};
+    for(int i=1;i<n;++i){
+        ans.push_back(i);
+    }
+    print(ans);
+    /*vector<int> path;
+    vector<int> mark(n,0);
+    auto dfs=[&](auto&&dfs){
+        if(!quickCheck(path))
+            return;
+        if(path.size()==n){
+            print(path);
+            return;
+        }
+        for(int i=0;i<mark.size();++i){
+            if(mark[i])
+                continue;
+            mark[i]=1;
+            path.push_back(i+1);
+            dfs(dfs);
+            path.pop_back();
+            mark[i]=0;
+
+        }
+    };
+    dfs(dfs);*/
     
-
-
-
-
 
     
 }

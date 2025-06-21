@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -67,16 +66,41 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+class graphMeth
+{
+public:
+    int n;
+    vector<vector<int>> edges;
+    vector<int> nums;
+    // default
+    graphMeth(int sz, vector<vector<int>> raw_edges) : edges(sz), n(sz)
+    {
+        for (auto edge : raw_edges)
+        {
+            edges[edge[0]].push_back(edge[1]);
+            edges[edge[1]].push_back(edge[0]);
+        }
+    }
+    // 点权
+    graphMeth(int sz, vector<vector<int>> raw_edges, vector<int> vals) : edges(sz), n(sz), nums(vals)
+    {
+        for (auto edge : raw_edges)
+        {
+            edges[edge[0]].push_back(edge[1]);
+            edges[edge[1]].push_back(edge[0]);
+        }
+    }
+};
 void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
-
-    
+    vector<int> nums=cin_nums(n-2);
+    for(int i=2;i<nums.size();++i){
+        if(nums[i-2]==1&&nums[i-1]==0&&nums[i]==1){
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
+    cout<<"YES"<<endl;
 }

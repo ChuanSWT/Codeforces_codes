@@ -72,11 +72,8 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
+    vector<int> nums=cin_nums(n);
+    cout<<*max_element(nums.begin(),nums.end())-*min_element(nums.begin(),nums.end())<<endl;
 
     
 }

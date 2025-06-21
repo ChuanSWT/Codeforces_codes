@@ -72,11 +72,15 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
-
+    if(n%2==0){
+        cout<<-1<<endl;
+        return;
+    }
+    vector<int> ans(n,-1);
+    for(int i=0;i<ans.size();++i){
+        int offset=i;
+        ans[(i+offset)%(ans.size())]=i+1;
+    }
+    print(ans);
     
 }

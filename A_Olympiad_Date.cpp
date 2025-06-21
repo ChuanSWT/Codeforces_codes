@@ -67,16 +67,35 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+bool check(map<int,int> mp){
+    for(auto p:mp){
+        if(p.second>0){
+            return false;
+        }
+    }
+    return true;
+}
 void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums=cin_nums(n);
+    //01.03.2025
+    map<int,int> mp;
+    mp[0]+=3;
+    mp[1]+=1;
+    mp[2]+=2;
+    mp[3]+=1;
+    mp[5]+=1;
 
-
-
-
+    for(int i=0;i<nums.size();++i){
+        --mp[nums[i]];
+        if(check(mp)){
+            cout<<i+1<<endl;
+            return;
+        }
+    }
+    cout<<0<<endl;
 
     
 }

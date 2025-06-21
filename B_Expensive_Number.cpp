@@ -70,13 +70,35 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
+    string s;
+    cin>>s;
+    int n=s.size();
+    int cnt=0;
+    for(char c:s){
+        if(c=='0')
+            cnt+=1;
+    }
+    if(cnt==0){
+        cout<<s.size()-1<<endl;
+        return;
+    }
+    //现在至少有一个0
+    //302010 ans=2
+    //枚举个位数
+    //结果一定是1
+    int maxv=0;//可以保留的0的数量
+    for(int i=0;i<s.size();++i){
+        if(s[i]=='0')
+            continue;
+        int val=s[i]-'0';
+        int sum=0;
+        for(int j=0;j<i;++j){
+            sum+=s[j]=='0';
+        }
+        maxv=max(maxv,sum);
+    }
+    cout<<n-maxv-1<<endl;
     
-
-
-
-
 
     
 }

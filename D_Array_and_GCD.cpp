@@ -13,7 +13,7 @@
 #define int long long
 
 using namespace std;
-
+vector<int> pre_prime_sum;
 void compete_solution();
 signed main()
 {
@@ -22,6 +22,21 @@ signed main()
     cout.tie(NULL);
     int t = 1;
     cin >> t;
+    vector<int> d(6e6,0);
+    for(int i=2;i<d.size();++i){
+        if(d[i])    
+            continue;
+        for(int j=i+i;j<d.size();j+=i){
+            d[j]=1;
+        }
+    }
+    for(int i=2;i<d.size();++i){
+        if(d[i]==0)
+        pre_prime_sum.push_back(i);
+    }
+    for(int i=1;i<pre_prime_sum.size();++i){
+        pre_prime_sum[i]+=pre_prime_sum[i-1];
+    }
     for (int i = 0; i < t; ++i)
     {
         compete_solution();
@@ -72,7 +87,18 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums=cin_nums(n);
+    sort(nums.rbegin(),nums.rend());
+    cout<<pre_prime_sum.size()<<endl;
+    int maxv=0;
+    int sum=0;
+    //print(pre_prime_sum);
+    for(int i=0;i<nums.size();++i){
+        sum+=nums[i];
+        if(sum>=pre_prime_sum[i])
+            maxv=max(maxv,i);
+    }
+    cout<<n-(maxv+1)<<endl;
 
 
 

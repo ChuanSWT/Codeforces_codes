@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -70,13 +69,15 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,k;
+    cin >> n>>k;
+    vector<int> nums=cin_nums(n);
+    int sum=accumulate(nums.begin(),nums.end(),0ll);
+    if(n*k==sum){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
 
-
-
-
-
-    
 }

@@ -67,15 +67,44 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+bool check1(vector<int> nums){
+    for(int x:nums){
+        if(x==0)
+            return false;
+    }
+    return true;
+}
 void compete_solution()
 {
     int n;
     cin >> n;
-    
+    string rst;
+    //这一步为了将1e9类大数降到可能可以处理的地步
+    cout<<"digit"<<endl;
+    cout.flush();
+    cin>>rst;
+    //max:72
+    //尝试用两条指令找到准确数字
+    //吗？
+    //这一步最坏是质数
+    //1到15都能填充//drop..
+    //在第一步使用除法是否能有效？
+    //或者乘一个超级大数？
+    //！！！乘9可以归到9或18
+    //！99 ->18
+    cout<<"mul 99"<<endl;
+    cout.flush();
+    cin>>rst;
+    cout<<"digit"<<endl;
+    cout.flush();
+    cin>>rst;
 
-
-
+    cout<<"add "<<n-18<<endl;
+    cout.flush();
+    cin>>rst;
+cout<<"!"<<endl;
+    cout.flush();
+    cin>>rst;
 
 
     

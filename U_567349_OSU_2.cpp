@@ -66,12 +66,47 @@ vector<vector<int>> cin_matrix(int n, int m)
 }
 
 
-
+int cal(vector<int> nums,int m){
+    int ans=0;
+    int pv=0;
+    for(int i=0;i<nums.size();++i){
+        if(!pv){
+            if(nums[i]==0)
+                continue;
+            if(i!=0&&nums[i-1]==1)
+                continue;
+            ++ans;
+            while(i+1<nums.size()&&nums[i+1]==1){
+                ++i;
+            }
+            pv=m;
+        }
+        else{
+            --pv;
+        }
+    }
+    return ans;
+}
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
+    int n,m;
+    cin >> n>>m;
+
+    m-=1;
+    vector<string> strs(4);
+    for(auto &s:strs)
+        cin>>s;
+    int ans=0;
+    for(auto s:strs){
+        vector<int> nums;
+        for(char c:s){
+            nums.push_back(c-'0');
+        }
+        ans+=cal(nums,m);
+        //cout<<cal(nums,m)<<endl;
+    }
+    cout<<ans<<endl;
     
 
 

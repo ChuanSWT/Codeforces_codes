@@ -66,13 +66,32 @@ vector<vector<int>> cin_matrix(int n, int m)
 }
 
 
-
+bool check(vector<int> nums,int k){
+    sort(nums.begin(),nums.end());
+    --nums.back();
+    sort(nums.begin(),nums.end());
+    if(nums.back()-nums[0]>k)
+        return true;
+    return false;
+}
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,k;
+    cin >> n>>k;
+    vector<int> nums=cin_nums(n);
+    sort(nums.begin(),nums.end());
+    if(check(nums,k)){
+        cout<<"Jerry"<<endl;
+        return;
+    }
+    int sum=accumulate(nums.begin(),nums.end(),0ll);
+    if(sum%2){
+        cout<<"Tom"<<endl;
+    }
+    else{
+        cout<<"Jerry"<<endl;
+    }
 
 
 

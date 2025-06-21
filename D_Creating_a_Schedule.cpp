@@ -70,12 +70,52 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,m;
+    cin>>n>>m;
+    vector<int> nums=cin_nums(m);
 
+    sort(nums.begin(),nums.end());
 
+    int left=0,right=m-1;
+    int cur=n;
 
+    while(cur>0){
+            //cout<<left<<" "<<right<<endl;
+        if(cur>=2){
+            for(int i=0;i<6;++i){
+                if(i%2==0){
+                    cout<<nums[left]<<" ";
+                }
+                else{
+                    cout<<nums[right]<<" ";
+                }
+            }
+            cout<<endl;
+            for(int i=0;i<6;++i){
+                if(i%2){
+                    cout<<nums[left]<<" ";
+                }
+                else{
+                    cout<<nums[right]<<" ";
+                }
+            }
+            cout<<endl;
+        }
+        else{
+            for(int i=0;i<6;++i){
+                if(i%2){
+                    cout<<nums[left]<<" ";
+                }
+                else{
+                    cout<<nums[right]<<" ";
+                }
+            }
+            cout<<endl;
+        }
+        ++left;
+        --right;
+        cur-=2;
+    }
 
 
     

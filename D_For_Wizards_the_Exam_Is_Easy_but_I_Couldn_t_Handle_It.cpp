@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -72,11 +71,26 @@ void compete_solution()
 {
     int n;
     cin >> n;
+    vector<int> nums=cin_nums(n);
+    int maxv=-1;
+    int left=0,right=0;
+    for(int i=0;i<nums.size();++i){
+        int sum=0;
+        for(int j=i+1;j<nums.size();++j){
+            if(nums[i]>nums[j]){
+                sum+=1;
+            }
+            if(nums[i]<nums[j]){
+                sum-=1;
+            }
+            if(sum>maxv){
+                maxv=sum;
+                left=i;
+                right=j;
+            }
+        }
+    }
+    cout<<left+1<<" "<<right+1<<endl;
     
 
-
-
-
-
-    
 }

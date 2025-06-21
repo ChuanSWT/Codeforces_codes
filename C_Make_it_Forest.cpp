@@ -21,7 +21,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for (int i = 0; i < t; ++i)
     {
         compete_solution();
@@ -70,13 +70,53 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
+    int n,m;
+    cin >> n>>m;
+    vector<vector<int>> r_edges=cin_matrix(m,2);
+    for(auto &arr:r_edges){
+        --arr[0];
+        --arr[1];
+    }
+    vector<vector<int>> edges(n);
+    for(auto arr:r_edges){
+        int x=arr[0];
+        int y=arr[1];
+        edges[x].push_back(y);
+        edges[y].push_back(x);
+    }
+    /*for(auto arr:edges){
+        print(arr);
+    }*/
+    vector<int> mark(n,0);
+    int ans=0;
+    for(int i=0;i<n;++i){
+        if(mark[i])
+            continue;
+        set<int> st;
+        queue<int> qu;
+        qu.push(i);
+        while(qu.size()){
+            int node=qu.front();
+            qu.pop();
+            st.insert(node);
+            mark[node]=1;
+            for(int x:edges[node]){
+                if(mark[x])
+                    continue;
+                qu.push(x);
+            }
+        }
+        int cnt=0;
+        for(int x:st){
+            cnt+=edges[x].size();
+        }
+        //cout<<cnt<<endl;
+        //print(mark);
+        cnt/=2;
+        ans+=cnt-(int)st.size()+1;
+    }
+    cout<<ans<<endl;
     
-
-
-
-
 
     
 }

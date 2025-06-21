@@ -70,13 +70,32 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,m,k;
+    cin >> n>>m>>k;
 
-
-
-
+    //首先写个循环 让其无法破坏
+    //如k==3，m==2
+    //可以写:
+    //012012012
+    if(k*(m+1)>=n){
+        vector<int> ans;
+        for(int i=0;i<n;++i){
+        ans.push_back(i%k);
+        }
+        print(ans);
+    return;
+    }
+    vector<vector<int>> grid(m+1);
+    for(int i=0;i<n;++i){
+        int sz=grid[i%(m+1)].size();
+        grid[i%(m+1)].push_back(sz);
+    }
+    vector<int> ans;
+    for(auto arr:grid){
+        for(int x:arr)
+            ans.push_back(x);
+    }
+    print(ans);
 
     
 }

@@ -10,7 +10,6 @@
 #include <iomanip>
 #include <numeric>
 #include <assert.h>
-#define int long long
 
 using namespace std;
 
@@ -66,16 +65,41 @@ vector<vector<int>> cin_matrix(int n, int m)
 }
 
 
-
-
+int cal(vector<int> &nums,int target){
+    vector<int> st(target,1);
+    vector<int> cur_st=st;
+    int ans=0;
+    int cur=target;
+    for(int x:nums){
+        if(x>=target)
+            continue;
+        if(cur_st[x])
+            --cur;
+        cur_st[x]=0;
+        if(cur==0){
+            cur_st=st;
+            cur=target;
+            ++ans;
+        }
+    }
+    return ans;
+}
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
-
-
-
+    int n,k;
+    cin >> n>>k;
+    vector<int> nums=cin_nums(n);
+    int left=1,right=n+1;
+    while(left<right){
+        int mid=(left+right)/2;
+        if(cal(nums,mid)<k){
+            right=mid;
+        }
+        else{
+            left=mid+1;
+        }
+    }
+    cout<<left-1<<endl;
 
 
     

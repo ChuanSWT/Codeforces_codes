@@ -72,8 +72,28 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums=cin_nums(n);
 
+    vector<int> mark(n,0);
+    int ans=0x3f3f3f3f3f3f3f3f;
+    for(int left=0;left<nums.size();++left){
+        if(mark[left])
+            continue;
+        int right=left;
+        for(int i=left;i<nums.size();++i){
+            if(nums[i]==nums[left]){
+                mark[i]=1;
+                right=i;
+            }
+            else
+                break;
+        }
+        int sum=0;
+        sum+=left*nums[left];
+        sum+=(n-right-1)*nums[right];
+        ans=min(ans,sum);
+    }
+    cout<<ans<<endl;
 
 
 

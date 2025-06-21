@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -72,11 +71,28 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
+    vector<string> grid(n);
+    for(auto&s:grid)
+        cin>>s;
+    int maxv=0;
+    int sum=0;
+    for(auto arr:grid){
+        for(auto x:arr){
+            if(x=='1')
+                ++sum;
+        }
+    }
+    for(int x=0;x<grid.size();++x){
+        int cnt=0;
+        for(int i=0;i<n;++i){
+            int newX=(x+i)%n;
+            int newY=i;
+            if(grid[newX][newY]=='1')
+                ++cnt;
+        }
+        maxv=max(maxv,cnt);
+    }
+    cout<<sum-maxv+(n-maxv)<<endl;
 
     
 }

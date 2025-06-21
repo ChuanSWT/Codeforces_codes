@@ -67,16 +67,39 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+int fd(int val,int idx,map<int,vector<int>> &mp){
+    for(int x:mp[val]){
+        if(x!=idx)
+            return x;
+    }
+    return -1;
+}
 void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums=cin_nums(2*n);
+    //1 2 3 4 5 1 2 3 4 5
+    //1 2   2 3...
 
-
-
-
-
+    map<int,vector<int>> mp;
+    for(int i=0;i<nums.size();++i){
+        mp[nums[i]].push_back(i);
+    }
+    int ans=0;
+    for(int i=1;i<nums.size();++i){
+        int v1=nums[i-1];
+        int v2=nums[i];
+        if(v1==v2)
+            continue;
+        int v11=fd(v1,i-1,mp);
+        int v22=fd(v2,i,mp);
+        //1212
+        if(abs(v11-v22)==1&&abs(i-1-v11)>1&&abs(i-v22)>1){
+            ++ans;
+        }
+    }
+    ans/=2;
+    cout<<ans<<endl;
     
 }

@@ -67,16 +67,31 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+vector<int> count(string s,int offset){
+    vector<int> ans(2,0);
+    for(int i=offset;i<s.size();i+=2){
+        if(s[i]=='0')
+            ++ans[0];
+        else
+            ++ans[1];
+    }
+    return ans;
+}
 void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
-
+    string s1,s2;
+    cin>>s1>>s2;
+    vector<int> rst10=count(s1,0);
+    vector<int> rst11=count(s1,1);
+    vector<int> rst20=count(s2,0);
+    vector<int> rst21=count(s2,1);
+    if(rst10[1]<=rst21[0]&&rst11[1]<=rst20[0]){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
     
 }

@@ -72,11 +72,7 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
+    cout<<n*2<<endl;
 
     
 }

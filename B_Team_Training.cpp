@@ -70,13 +70,22 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
-
-
-
-
+    int n,limit;
+    cin >> n>>limit;
+    vector<int> nums=cin_nums(n);
+    sort(nums.rbegin(),nums.rend());
+    int ans=0;
+    int left=0;
+    for(int right=0;right<nums.size();++right){
+        int length=right-left+1;
+        int strength=length*nums[right];
+        if(strength>=limit){
+            left=right+1;
+            ans+=1;
+        }
+        
+    }
+    cout<<ans<<endl;
 
     
 }

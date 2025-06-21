@@ -68,12 +68,55 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
+bool check(vector<int> nums,vector<vector<int>> queries){
+    int cur=0;
+    for(int i=0;i<nums.size();++i){
+        int left=queries[i][0],right=queries[i][1];
+        cur+=nums[i];
+        if(cur<left||cur>right)
+            return false;
+    }
+    return true;
+}
 void compete_solution()
 {
     int n;
-    cin >> n;
-    
+    cin>>n;
+    vector<int> nums=cin_nums(n);
 
+    vector<vector<int>> queries=cin_matrix(n,2);
+    //前面可停可上升
+    vector<int> ans=nums;
+    //反悔贪心
+    vector<int> stk;
+    int cur=0;
+    for(int i=0;i<queries.size();++i){
+        int left=queries[i][0],right=queries[i][1];
+        if(nums[i]==-1)
+            stk.push_back(i);
+        else{
+            cur+=nums[i];
+        }
+        while(cur<left){
+            if(stk.empty()){
+                cout<<-1<<endl;
+                return;
+            }
+            int idx=stk.back();
+            stk.pop_back();
+            ans[idx]=1;
+            ++cur;
+        }
+    }
+    for(int &x:ans){
+        if(x==-1)
+            x=0;
+    }
+    if(!check(ans,queries)){
+        cout<<-1<<endl;
+        return;
+    }
+    print(ans);
 
 
 

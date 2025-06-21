@@ -65,15 +65,58 @@ vector<vector<int>> cin_matrix(int n, int m)
     return ans;
 }
 
-
-
-
+int cal_mex_ex0(map<int,int> mp){
+    for(int i=1;i<1e8;++i){
+        if(mp[i]==0)
+            return i;
+    }
+    return -1;
+}
 void compete_solution()
 {
     int n;
     cin >> n;
-    
-
+    vector<int> nums=cin_nums(n);
+    int cnt=0;
+    for(int x:nums){
+        if(x==0)
+            ++cnt;
+    }
+    if(cnt==0){
+        cout<<n<<endl;
+        return;
+    }
+    if(nums[0]==0){
+        cout<<n-cnt+1<<endl;
+        return;
+    }
+    map<int,int> mp;
+    for(int x:nums){
+        ++mp[x];
+    }
+    int cur_mex=cal_mex_ex0(mp);
+    vector<int> nxt_mex(n,-1);
+    for(int i=0;i<nums.size();++i){
+            if(--mp[nums[i]]==0){
+                cur_mex=min(cur_mex,nums[i]);
+            }
+        nxt_mex[i]=cur_mex;
+    }
+    //print(nxt_mex);
+    int minv=0x3f3f3f3f;
+    for(int i=0;i<nums.size();++i){
+        if(nums[i]!=0)
+            minv=min(minv,nums[i]);
+        if(nums[i]==0&&minv>=nxt_mex[i]){
+            cout<<n-cnt+1<<endl;
+            return;
+        }
+        if(nums[i]!=0&&minv<nxt_mex[i]){
+            cout<<n-cnt<<endl;
+            return;
+        }
+    }
+    cout<<n-cnt<<endl;
 
 
 

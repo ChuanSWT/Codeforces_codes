@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -72,11 +71,6 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
-
-    
+    vector<int> nums=cin_nums(n);
+    cout<<accumulate(nums.begin(),nums.end(),0ll)-n+1<<endl;
 }

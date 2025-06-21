@@ -66,15 +66,44 @@ vector<vector<int>> cin_matrix(int n, int m)
 }
 
 
+int c(int n,int a){
+    int left=a;
+    int right=n-a+1;
 
+    return max(left,right);
+}
+int c2(int n,int a){
+    int left=a;
+    int right=n-a+1;
 
+    return min(left,right);
+}
+int cal(int n,int m){
+    int ans=1;
+    while(n!=1){
+        n=c2(n,n/2+n%2);
+        ++ans;
+    }
+    while(m!=1){
+        m=c2(m,m/2+m%2);
+        ++ans;
+    }
+    return ans;
+}
 void compete_solution()
 {
-    int n;
-    cin >> n;
+    int n,m,a,b;
+    cin>>n>>m>>a>>b;
     
+    int n1=n,m1=c2(m,b);
 
-
+    int n2=c2(n,a),m2=m;
+    //cout<<n1<<" "<<m1<<endl;
+    //cout<<n2<<" "<<m2<<endl;
+    int rst=0x3f3f3f3f;
+    rst=min(rst,cal(n1,m1));
+    rst=min(rst,cal(n2,m2));
+    cout<<rst<<endl;
 
 
 

@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -66,17 +65,47 @@ vector<vector<int>> cin_matrix(int n, int m)
 }
 
 
-
-
 void compete_solution()
 {
     int n;
     cin >> n;
-    
+    //1 0 0 1 ==9
+    //1 1 1 0 ==7
+    //0 1 1 1 ==14
 
+    //1 0 1
+    //1 1 0
+    //0 1 1
+    //1 0 1 1==13
+    //1 1 0 0==3
+    //0 1 1 1==14
+    //两种情况 全是1？
+    //2的幂次？
+    //全0到全1
+    //0 0 1 1
+    //1 1 0 0
+    //1 1 1 1
 
+    //1 0 1
+    //1 1
+    //0 1 1
+    set<int> st;
+    for(int i=0;i<=30;++i){
+        st.insert(1<<i);
+    }
+    if(st.count(n)||st.count(n+1)){
+        cout<<-1<<endl;
+    }
+    else{
+        int index=0;
+        
+        for(int i=0;i<=30;++i){
+            if(((1<<i)&n)){
+                index=i;
+            }
+        }
+        cout<<(1<<index)-1<<endl;
+        
 
-
-
-    
+    }
 }

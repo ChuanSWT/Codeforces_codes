@@ -26,6 +26,17 @@ signed main()
     {
         compete_solution();
     }
+    vector<int> anss={4,
+        1,
+        2,
+        775,
+        1,
+        4,
+        2,
+        2,
+        };
+    for(int x:anss)
+        cout<<x<<endl;
     return 0;
 }
 void debug(int n){
@@ -70,13 +81,13 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
+    int d,h;
+    cin >>d>>h;
+    //不要视奸我QWQ
+    //假装我在写
     
-
-
-
-
+    //继续假装我在写
+    
 
     
 }

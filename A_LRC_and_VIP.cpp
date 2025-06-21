@@ -72,9 +72,23 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums=cin_nums(n);
 
-
+    int mx=*max_element(nums.begin(),nums.end());
+    int mn=*min_element(nums.begin(),nums.end());
+    if(mx==mn){
+        cout<<"No"<<endl;
+        return;
+    }
+    cout<<"Yes"<<endl;
+    vector<int> ans(n,1);
+    for(int i=0;i<n;++i){
+        if(nums[i]==mx){
+            ans[i]=2;
+            print(ans);
+            break;;
+        }
+    }
 
 
 

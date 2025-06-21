@@ -72,8 +72,22 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
-
+    vector<int> nums=cin_nums(n);
+    vector<int> ans;
+    multiset<int> mst;
+    for(int x:nums){
+        mst.insert(x);
+    }
+    int sum=0;
+    ans.push_back(*max_element(nums.begin(),nums.end()));
+    for(int i=n-1;i>0;--i){
+        sum+=nums[i];
+        auto p=mst.find(nums[i]);
+        mst.erase(p);
+        ans.push_back(sum+*mst.rbegin());
+    }
+    //ans.push_back(accumulate(nums.begin(),nums.end(),0ll));
+    print(ans);
 
 
 

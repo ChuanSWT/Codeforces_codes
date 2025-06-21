@@ -70,13 +70,21 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
-
-
-
-
-
+    int n,m,k;
+    cin >> n>>m>>k;   
+    //cout<<n<<" "<<m<<" "<<k<<endl;
+    vector<vector<int>> ans(n,vector<int>(m,-1));
+    for(int i=0;i<n*m;++i){
+        ans[i/m][i%m]=i%k+1;
+    }
+    if(m%k==0){
+        for(int i=1;i<ans.size();i+=2){
+            int val=ans[i][0];
+            ans[i].erase(ans[i].begin());
+            ans[i].push_back(val);
+        }
+    }
+    for(auto arr:ans)
+        print(arr);
     
 }

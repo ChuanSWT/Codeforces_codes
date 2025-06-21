@@ -70,13 +70,32 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,k;
+    cin >> n>>k;
+    string s;
+    cin>>s;
 
-
-
-
+    if(k==0){
+        string rev_s=s;
+        reverse(rev_s.begin(),rev_s.end());
+        if(s<rev_s){
+            cout<<"YES"<<endl;
+        }
+        else{
+            cout<<"NO"<<endl;
+        }
+        return;
+    }
+    map<char,int> mp;
+    for(char c:s){
+        mp[c]+=1;
+    }
+    if(mp.size()!=1){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
 
     
 }

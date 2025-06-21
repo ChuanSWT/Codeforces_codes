@@ -72,11 +72,12 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
+    if(n%2){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
 
     
 }

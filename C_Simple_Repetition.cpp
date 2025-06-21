@@ -66,17 +66,53 @@ vector<vector<int>> cin_matrix(int n, int m)
 }
 
 
-
-
+bool check1(int x){
+    while(x){
+        if(x%10!=1)
+            return false;
+        x/=10;
+    }
+    return true;
+}
+bool is_prime(int x){
+    for(int i=2;i*i<=x;++i){
+        if(x%i==0)
+            return false;
+    }
+    return true;
+}
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int x,k;
+    cin >> x>>k;
+    if(x*k==1){
+        cout<<"NO"<<endl;
+        return;
+    }
+    if(!check1(x)){
+        if(k!=1){
+            cout<<"NO"<<endl;
+            return;
+        }
+        if(is_prime(x)){
+            cout<<"YES"<<endl;
+        }
+        else{
+            cout<<"NO"<<endl;
+        }
+        return;
+    }
+    //如果是全1
+    int a=0;
+    while(x){
+        a+=1;
+        x/=10;
+    }
+    int sum=a*k;
+    if(sum==2){
+        cout<<"YES"<<endl;
+        return;
+    }
 
-
-
-
-
-    
+    cout<<"NO"<<endl;
 }

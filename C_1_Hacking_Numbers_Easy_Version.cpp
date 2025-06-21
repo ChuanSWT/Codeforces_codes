@@ -67,12 +67,62 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+bool check1(vector<int> nums){
+    for(int x:nums){
+        if(x==0)
+            return false;
+    }
+    return true;
+}
 void compete_solution()
 {
     int n;
     cin >> n;
-    
+    //99999999
+    //digit
+    //72
+    //!hack
+    //digit
+    //9
+    //两次就行
+    //-3
+    //-3
+    //-2
+    //-1
+    //++
+    string rst;
+    cout<<"digit"<<endl;
+    cout.flush();
+    cin>>rst;
+
+    cout<<"digit"<<endl;
+    cout.flush();
+    cin>>rst;
+    //15
+    cout<<"add -8"<<endl;
+    cout.flush();
+    cin>>rst;
+
+    cout<<"add -4"<<endl;
+    cout.flush();
+    cin>>rst;
+
+    cout<<"add -2"<<endl;
+    cout.flush();
+    cin>>rst;
+
+    cout<<"add -1"<<endl;
+    cout.flush();
+    cin>>rst;
+
+    cout<<"add "<<n-1<<endl;
+    cout.flush();
+    cin>>rst;
+
+    cout<<"!"<<endl;
+    cout.flush();
+    cin>>rst;
+
 
 
 

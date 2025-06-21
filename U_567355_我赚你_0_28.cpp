@@ -67,12 +67,22 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+int mod=1e9+7;
 void compete_solution()
 {
     int n;
     cin >> n;
-    
+    int ans=1;
+    auto dfs=[&](auto &&dfs,int cur)->int{
+        if(cur==0)
+            return 1;
+        int rst=dfs(dfs,cur/2);
+        if(cur&1){
+            return rst*rst*2%mod;
+        }
+        return rst*rst%mod;
+    };
+    cout<<dfs(dfs,n)<<endl;
 
 
 

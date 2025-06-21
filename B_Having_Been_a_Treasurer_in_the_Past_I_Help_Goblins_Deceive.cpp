@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -72,11 +71,17 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
+    string s;
+    cin>>s;
+    int mid=0,button=0;
+    for(char c:s){
+        if(c=='-'){
+            ++mid;
+        }
+        else{
+            ++button;
+        }
+    }
+    cout<<button*(mid>>1)*((mid>>1)+(mid&1))<<endl;
 
-
-
-
-
-    
 }

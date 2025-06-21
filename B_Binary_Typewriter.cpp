@@ -67,15 +67,54 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+int cal(string s){
+    int cnt=0;
+    for(int i=1;i<s.size();++i){
+        cnt+=s[i]!=s[i-1];
+    }
+    return cnt;
+}
+bool check(string s){
+    set<char> st;
+    for(char c:s){
+        st.insert(c);
+    }
+    return st.size()==1;
+}
 void compete_solution()
 {
     int n;
     cin >> n;
+    string s;
+    cin>>s;
+    if(check(s)){
+        if(s[0]=='1'){
+            cout<<s.size()+1<<endl;
+        }
+        else
+            cout<<s.size()<<endl;
+        return;
+    }
+    int rst=cal(s);
+    int sum=s.size();
+    if(s[0]=='1'){
+        if(rst>=2){
+            cout<<sum+rst-1<<endl;
+        }
+        else{
+            cout<<sum+1<<endl;
+        }
+    }
+    else{
+        if(rst>=3){
+            cout<<sum+rst-2<<endl;
+        }
+        else{
+            cout<<sum+1<<endl;
+        }
+
+    }
     
-
-
-
 
 
     

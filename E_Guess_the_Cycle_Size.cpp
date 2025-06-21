@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -21,7 +20,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for (int i = 0; i < t; ++i)
     {
         compete_solution();
@@ -64,19 +63,46 @@ vector<vector<int>> cin_matrix(int n, int m)
     }
     return ans;
 }
+string i2s(int n){
+    string ans;
+    while(n){
+        ans+=n%10+'0';
+        n/=10;
+    }
+    reverse(ans.begin(),ans.end());
+    return ans;
 
-
-
-
+}
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    vector<int> nums;
+    int time=25;
+    for(int i=2;i<2+time;++i){
+        nums.push_back(i);
+    }
+    vector<int> responses;
+    for(int x:nums){
+        cout<<"?"<<" "<<"1"<<" "<<i2s(x)<<endl;
+        int rst1;
+        cin>>rst1;
+        cout<<"?"<<" "<<i2s(x)<<" "<<"1"<<endl;
+        int rst2;
+        cin>>rst2;
+        responses.push_back(rst1);
+        responses.push_back(rst2);
+    }
+    for(int i=0;i<responses.size();i+=2){
+        int target=i/2+2;
+        if(responses[i]==-1){
+            cout<<"! "<<target-1<<endl;
+            return;
+        }
+        if(responses[i]!=responses[i+1]){
+            cout<<"! "<<responses[i]+responses[i+1]<<endl;
+            return;
+        }
+    }
+    //map<int,int> mp;
 
-
-
-
-
-    
+    cout<<"! "<<responses[0]*2<<endl;
 }

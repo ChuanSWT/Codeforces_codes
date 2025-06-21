@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -72,10 +71,51 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> a=cin_nums(n);
+    vector<int> b=cin_nums(n);
+    vector<int> d=cin_nums(n);
+    for(int i=0;i<n;++i){
+        --a[i];
+        --b[i];
+    }
+    map<int,int> mp;
+    for(int i=0;i<b.size();++i){
+        mp[b[i]]=i;
+    }
+    vector<int> mark(n,0);
+    //考虑环
+    //1 3 2 4
+    //3 4 1 2
+    //0 0 0 0
+    //1 3 2 4
+    //3 4 1 2
 
+    //1 0 0 0
+    //其中若有元素被固定 则回环失效 *1
+    int mod=1e9+7;
+    int ans=1;
+    for(int i=0;i<n;++i){
+        if(mark[i])
+            continue;
+        mark[i]=1;
+        if(a[i]==b[i])
+            continue;
+        
+        bool cnt=d[i]!=0;
 
-
+        int cur=mp[a[i]];
+        while(cur!=i){
+            cnt+=d[cur]!=0;
+            mark[cur]=1;
+            cur=mp[a[cur]];
+        }
+        //cout<<cnt<<endl;
+        if(cnt==0){
+            ans*=2;
+            ans%=mod;
+        }
+    }
+    cout<<ans<<endl;
 
 
     

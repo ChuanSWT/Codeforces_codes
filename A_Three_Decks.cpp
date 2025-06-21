@@ -70,8 +70,20 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
+    int a,b,c;
+    cin>>a>>b>>c;
+    if(a<b){
+        swap(a,b);
+    }
+    int temp=a-b;
+    c-=temp;
+    b+=temp;
+    if(c>=b&&(c-b)%3==0){
+        cout<<"YES"<<endl;
+        return;
+    }
+    cout<<"NO"<<endl;
+
     
 
 

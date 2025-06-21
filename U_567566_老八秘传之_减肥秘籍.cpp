@@ -21,7 +21,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for (int i = 0; i < t; ++i)
     {
         compete_solution();
@@ -66,15 +66,28 @@ vector<vector<int>> cin_matrix(int n, int m)
 }
 
 
-
-
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,m;
+    cin>>n>>m;
+    vector<int> nums=cin_nums(n);
 
+    map<int,int> mp;
+    for(int x:nums)
+        ++mp[x];
 
+    vector<int> dp(m+1,-0x3f3f3f3f);
+    dp[0]=0;
+    for(auto p:mp){
+        int val=p.first,cnt=p.second;
+        for(int i=m;i>=0;--i){
+            if(i-val*cnt>=0){
+                dp[i]=max(dp[i],dp[i-val*cnt]+cnt);
+            }
+        }
+    }
+    int ans=*max_element(dp.begin(),dp.end());
+    cout<<ans<<endl;
 
 
 

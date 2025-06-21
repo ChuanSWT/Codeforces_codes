@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -21,7 +20,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for (int i = 0; i < t; ++i)
     {
         compete_solution();
@@ -72,11 +71,15 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<vector<int>> grid=cin_matrix(n,n);
+    int sum=0;
+    int minv=0x3f3f3f3f;
+    for(auto arr:grid){
+        sum+=accumulate(arr.begin(),arr.end(),0ll);
+    }
+    for(int x=0;x<n;++x){
+        minv=min(minv,grid[x][n-x-1]);
+    }
+    cout<<sum-minv<<endl;
 
-
-
-
-
-    
 }

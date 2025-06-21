@@ -67,12 +67,30 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+int mod=1e9+7;
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,m,k;
+    cin >> n>>m>>k;
+    vector<vector<int>> points=cin_matrix(5,2);
+
+    for(auto &p:points){
+        --p[0],--p[1];
+    }
+    vector<vector<int>> grid(n,vector<int>(m,0));
+    for(int i=0;i<points.size();++i){
+        int x=points[i][0],y=points[i][1];
+        grid[x][y]=1;
+    }
+    vector<int> dx={1,0,-1,0};
+    vector<int> dy={0,1,0,-1};
+    vector<vector<int>> mark(n,vector<int>(m,0));
+    auto dfs=[&](auto &&dfs,int x,int y,int dep){
+        if(dep==points.size()*2+1){
+            
+        }
+    }
+
 
 
 

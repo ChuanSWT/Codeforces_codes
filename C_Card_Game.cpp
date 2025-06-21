@@ -67,15 +67,46 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
 void compete_solution()
 {
     int n;
     cin >> n;
-    
+    string s;
+    cin>>s;
+    if(s[0]=='B'&&s.back()=='B'){
+        cout<<"Bob"<<endl;
+        return;
+    }
+    if(s[0]=='A'&&s.back()=='A'){
+        cout<<"Alice"<<endl;
+        return;
+    }
+    map<char,int> mp;
+    for(char c:s){
+        ++mp[c];
+    }
+    if(s[0]=='B'&&s.back()=='A'){
+        if(s[n-2]=='B'){
+            cout<<"Bob"<<endl;
+            return;
+        }
+        else{
+            cout<<"Alice"<<endl;
+            return;
+        }
+    }
 
 
-
+    if(s[0]=='A'&&s.back()=='B'){
+        if(mp['B']==1){
+            cout<<"Alice"<<endl;
+            return;
+        }
+        else{
+            cout<<"Bob"<<endl;
+            return;
+        }
+    }
 
 
     

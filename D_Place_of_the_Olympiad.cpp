@@ -66,17 +66,33 @@ vector<vector<int>> cin_matrix(int n, int m)
 }
 
 
-
+int cal(int n,int m,int mid){
+    int mul=m/(mid+1);
+    int line=0;
+    line+=mul*mid;
+    line+=m-mul*(mid+1);
+    
+    int ans=n*line;
+    return ans;
+}
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
+    int n,m,k;
+    cin >> n>>m>>k;
+
+    int left=1,right=m+1;
+    while(left<right){
+        int mid=(left+right)/2;
+        if(cal(n,m,mid)<k){
+            left=mid+1;
+        }
+        else{
+            right=mid;
+        }
+    }
+    cout<<left<<endl;
     
-
-
-
-
 
     
 }

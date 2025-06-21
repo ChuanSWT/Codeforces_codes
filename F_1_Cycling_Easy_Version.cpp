@@ -72,7 +72,17 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums=cin_nums(n);
+    reverse(nums.begin(),nums.end());
+
+    map<int,vector<int>> mp;
+    for(int i=0;i<nums.size();++i){
+        mp[nums[i]].push_back(i);
+    }
+    int ans=0;
+    ans+=mp.begin()->second[0]+2*n-1;
+    ans-=mp.begin()->second.size()-1;
+    cout<<ans<<endl;
 
 
 

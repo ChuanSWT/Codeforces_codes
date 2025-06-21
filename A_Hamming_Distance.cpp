@@ -21,7 +21,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for (int i = 0; i < t; ++i)
     {
         compete_solution();
@@ -72,11 +72,13 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
+    string a,b;
+    cin>>a>>b;
+    int cnt=0;
+    for(int i=0;i<n;++i){
+        cnt+=a[i]!=b[i];
+    }
+    cout<<cnt<<endl;
 
     
 }

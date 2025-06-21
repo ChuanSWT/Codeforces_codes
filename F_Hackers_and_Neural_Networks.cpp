@@ -67,15 +67,54 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+int cal(vector<int> nums){
+    int ans=0;
+    for(int x:nums){
+        ans*=2;
+        ans+=x;
+    }
+    return ans;
+}
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
-
-
-
+    int n,k;
+    cin >> n>>k;
+    vector<vector<string>> strss(k+1,vector<string>(n));
+    for(auto &arr:strss){
+        for(auto &s:arr)
+            cin>>s;
+    }
+    //cout<<strss.size()<<" "<<strss[0].size()<<endl;
+    /*for(auto arr:strss){
+        print(arr);
+    }*/
+    vector<vector<int>> grid(k,vector<int>(n,0));
+    for(int x=0;x<k;++x){
+        for(int y=0;y<n;++y){
+            //cout<<x<<" "<<y<<endl;
+            //cout<<strss[0][k]<<endl;
+            if(strss[x+1][y]==strss[0][y]){
+                grid[x][y]=1;
+            }
+        }
+    }
+    vector<int> mark(n,0);
+    for(auto arr:grid){
+        for(int i=0;i<arr.size();++i){
+            mark[i]|=arr[i];
+        }
+    }
+    if(accumulate(mark.begin(),mark.end(),0)!=mark.size()){
+        cout<<-1<<endl;
+        return;
+    }
+    int maxv=0;
+    for(int i=0;i<grid.size();++i){
+        int t=accumulate(grid[i].begin(),grid[i].end(),0);
+        maxv=max(maxv,t);
+    }
+    int ans=n+2*(n-maxv);
+    cout<<ans<<endl;
 
 
     

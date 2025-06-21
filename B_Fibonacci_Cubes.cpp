@@ -70,10 +70,30 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,m;
+    cin >> n>>m;
+    vector<int> fib(11,0);
+    fib[1]=1;
+    fib[2]=2;
+    for(int i=3;i<fib.size();++i){
+        fib[i]=fib[i-1]+fib[i-2];
+    }
+    vector<vector<int>> queries=cin_matrix(m,3);
 
+    string ans;
+    for(auto arr:queries){
+        sort(arr.begin(),arr.end());
+        int x=arr[0],y=arr[1],z=arr[2];
+        int len1=fib[n];
+        int len2=fib[n-1];
+        if(len1+len2>z||len1>x||len1>y){
+            ans+='0';
+        }
+        else{
+            ans+='1';
+        }
+    }
+    cout<<ans<<endl;
 
 
 

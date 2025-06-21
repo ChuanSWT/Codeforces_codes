@@ -28,8 +28,9 @@ signed main()
     }
     return 0;
 }
-void debug(int n){
-    cout<<n<<endl;
+void debug(int n)
+{
+    cout << n << endl;
 }
 template <typename T>
 void print(const std::vector<T> &vec)
@@ -65,18 +66,46 @@ vector<vector<int>> cin_matrix(int n, int m)
     return ans;
 }
 
-
-
-
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int x, y;
+    cin >> x >> y;
+
+    if(x==y){
+        cout<<-1<<endl;
+        return;
+    }
+    //主要解决1的同时存在矛盾
+    int minv=0x3f3f3f3f;
+    int maxv=-1;
+    for(int i=0;i<40;++i){
+        int mask=1ll<<i;
+        if((x&mask)&&(y&mask)){
+            maxv=max(maxv,i);
+            minv=min(minv,i);
+        }
+    }
+    if(minv==-1){
+        cout<<-1<<endl;
+        return;
+    }
+    int ans=0;
+    bool status=0;
+    for(int i=minv;i<=40;++i){
+        if((x^y)==(x|y))
+            break;
+        
+        int mask=1ll<<i;
+        if((x&mask)&&(y^mask)){
+            status=1;
+        }
+        if((x&mask)(y^mask))
+        x+=mask;
+        y+=mask;
+        ans+=mask;
+    }
+    cout<<ans<<endl;
 
 
 
-
-
-    
 }

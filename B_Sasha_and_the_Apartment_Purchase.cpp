@@ -70,9 +70,20 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,k;
+    cin >> n>>k;
+    vector<int> nums=cin_nums(n);
+    sort(nums.begin(),nums.end());
+    int left=0x3f3f3f3f,right=0;
+    for(int i=0;i<nums.size();++i){
+        int l=i;int r=n-i-1;
+        if(abs(l-r)<=k+1){
+            //cout<<i<<endl;
+            left=min(left,nums[i]);
+            right=max(right,nums[i]);
+        }
+    }
+    cout<<right-left+1<<endl;
 
 
 

@@ -66,15 +66,46 @@ vector<vector<int>> cin_matrix(int n, int m)
 }
 
 
-
-
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
-
-
+    int n,m;
+    cin>>n>>m;
+    vector<string> strs(n);
+    for(auto&s:strs)
+        cin>>s;
+    vector<vector<int>> cnt(n,vector<int>(m,0));    
+    map<char,vector<int>> mp;
+    mp['N']={-1,0};
+    mp['S']={1,0};
+    mp['W']={0,-1};
+    mp['E']={0,1};
+    vector<int> dx={1,0,-1,0};
+    vector<int> dy={0,1,0,-1};
+    for(int x=0;x<n;++x){
+        for(int y=0;y<m;++y){
+            if(strs[x][y]!='#'){
+                for(int i=0;i<4;++i){
+                    int nx=x+dx[i],ny=y+dy[i];
+                    ++cnt[nx][ny];
+                }
+                if(mp.count(strs[x][y])){
+                    int nx=x+mp[strs[x][y]][0],ny=y+mp[strs[x][y]][1];
+                    cnt[nx][ny]-=100;
+                }
+            }
+        }
+    }
+    /*for(auto arr:cnt)
+        print(arr);*/
+    map<int,int> mp2;
+    for(int x=0;x<n;++x){
+        for(int y=0;y<m;++y){
+            if(strs[x][y]=='#'){
+                ++mp2[cnt[x][y]];
+            }
+        }
+    }
+    cout<<mp2[2]+mp2[3]+mp2[4]<<" "<<mp2[1]<<'\n';
 
 
 

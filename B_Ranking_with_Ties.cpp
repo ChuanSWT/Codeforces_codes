@@ -21,7 +21,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for (int i = 0; i < t; ++i)
     {
         compete_solution();
@@ -72,11 +72,23 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
+    vector<int> nums=cin_nums(n);
+    map<int,vector<int>> mp;
+    for(int i=0;i<nums.size();++i){
+        mp[-nums[i]].push_back(i);
+    }
+    vector<int> ans(n,-1);
+    int cur=1;
+    for(auto p:mp){
+        vector<int> arr=p.second;
+        for(int x:arr){
+            ans[x]=cur;
+        }
+        cur+=arr.size();
+    }
+    for(int x:ans){
+        cout<<x<<'\n';
+    }
 
     
 }

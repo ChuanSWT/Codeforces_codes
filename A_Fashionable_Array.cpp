@@ -67,12 +67,27 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+bool check(vector<int> nums){
+    return (*min_element(nums.begin(),nums.end())+*max_element(nums.begin(),nums.end()))%2==0;
+}
 void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums=cin_nums(n);
+    sort(nums.begin(),nums.end());
+    for(int len=n;len>=1;--len){
+        for(int left=0,right=len;right<=n;++left,++right){
+            vector<int> temp;
+            for(int i=left;i<right;++i){
+                temp.push_back(nums[i]);
+            }
+            if(check(temp)){
+                cout<<n-len<<endl;
+                return;
+            }
+        }
+    }
 
 
 

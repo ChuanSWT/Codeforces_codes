@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -21,23 +20,24 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for (int i = 0; i < t; ++i)
     {
         compete_solution();
     }
     return 0;
 }
-void debug(int n){
-    cout<<n<<endl;
+void debug(int n)
+{
+    cout << n << endl;
 }
 template <typename T>
 void print(const std::vector<T> &vec)
 {
-    for (auto element : vec)
-    {
-        std::cout << element << " ";
+    for(int i=0;i<vec.size()-1;++i){
+        cout<<vec[i]<<" ";
     }
+    cout<<vec.back();
     std::cout << std::endl;
 }
 int gcd(int x, int y)
@@ -65,18 +65,17 @@ vector<vector<int>> cin_matrix(int n, int m)
     return ans;
 }
 
-
-
-
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
-
-
-
-
-
-    
+    cout<<10000<<endl;
+    vector<int> line(26,0);
+    for(int i=0;i<26;++i){
+        line[i]+=1;
+    }
+    for(int i=0;i<24;++i){
+        line[i]+=1;
+    }
+    for(int i=0;i<10000;++i){
+        print(line);
+    }
 }

@@ -70,10 +70,63 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,x;
+    cin >> n>>x;
+    if(n==1&&x==0){
+        cout<<-1<<endl;
+        return;
+    }
+    if(n==1){
+        cout<<x<<endl;
+        return;
+    }
+    if(x==1){
+        if(n%2==0){
+            cout<<n+3<<endl;
 
+        }
+        else{
+            cout<<n<<endl;
+        }
+        return;
+    }
+    if(x==0){
+        if(n%2==0){
+            cout<<n<<endl;
+        }
+        else{
+            cout<<n+3<<endl;
+        }
+        return;
+    }
+    int len=n;
+    vector<int> ans;
+    while(x!=0&&len!=0){
+        --len;
+        int idx=-1;
+        for(int i=0;i<40;++i){
+            int mask=1ll<<i;
+            if(mask&x){
+                idx=i;
+            }
+        }
+        ans.push_back(1<<idx);
+        x-=1<<idx;
+    }
+    if(x!=0){
+        ans.back()^=x;
+        x=0;
+    }
+
+    int rst=0;
+    rst+=accumulate(ans.begin(),ans.end(),0ll);
+    if(len%2==0){
+        rst+=len;
+    }
+    else{
+        rst+=len+1;
+    }
+    cout<<rst<<endl;
 
 
 

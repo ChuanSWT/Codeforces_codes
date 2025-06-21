@@ -65,18 +65,39 @@ vector<vector<int>> cin_matrix(int n, int m)
     return ans;
 }
 
+//计算前缀和(包含)
+int cal(vector<int> &nums,int mid){
+    int n=nums.size();
+    int sum=accumulate(nums.begin(),nums.end(),0ll);
+    int ans=0;
+    ans+=mid/n*sum;
+    mid%=n;
+    for(int i=0;i<mid;++i){
+        ans+=nums[i];
+    }
+    return ans;
 
-
+}
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
+    int n,k,x;
+    cin >> n>>k>>x;
+    vector<int> nums=cin_nums(n);
+    int sum=accumulate(nums.begin(),nums.end(),0ll)*k;
+    int left=0,right=n*k;
+    while(left<right){
+        int mid=(left+right)/2;
+        int rst=cal(nums,mid);
+        if(sum-rst>=x){
+            left=mid+1;
+        }
+        else{
+            right=mid;
+        }
+    }
+    cout<<left<<endl;
     
-
-
-
-
 
     
 }

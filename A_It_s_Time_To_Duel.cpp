@@ -67,12 +67,34 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
-
+bool check1(vector<int> nums){
+    for(int x:nums){
+        if(x==0)
+            return false;
+    }
+    return true;
+}
 void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums=cin_nums(n);
+    if(check1(nums)){
+        cout<<"YES"<<endl;
+            return;
+    }
+    //只需要关注两侧?
+    //1 0 1
+    //3 2 3
+    for(int i=1;i<nums.size();++i){
+        if(nums[i]==0&&nums[i-1]==0){
+            cout<<"YES"<<endl;
+            return;
+        }
+    }
+    cout<<"NO"<<endl;
+
+
 
 
 

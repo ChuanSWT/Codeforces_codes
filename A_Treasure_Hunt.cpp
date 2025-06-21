@@ -70,13 +70,15 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
+    int a,b,c;
+    cin>>a>>b>>c;
+    c%=(a+b);
+    if(a>c){
+        cout<<"NO"<<endl;
+        return;
+    }
+    cout<<"YES"<<endl;
     
-
-
-
-
 
     
 }

@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -72,11 +71,19 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<vector<char>> ops;
+    vector<vector<int>> grid;
 
+    for(int i=0;i<n;++i){
+        char a,b;
+        int x,y;
+        cin>>a>>x>>b>>y;
+        ops.push_back({a,b});
+        grid.push_back({x,y});
+    }
+    vector<int> mul
+    for(int i=0;i<n;++i){
 
+    }
 
-
-
-    
 }

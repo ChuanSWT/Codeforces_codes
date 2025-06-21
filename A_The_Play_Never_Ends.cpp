@@ -9,7 +9,6 @@
 #include <queue>
 #include <iomanip>
 #include <numeric>
-#include <assert.h>
 #define int long long
 
 using namespace std;
@@ -72,11 +71,10 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
-
-
-
-
-
-    
+    if((n-1)%3==0){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
 }

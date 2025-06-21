@@ -71,7 +71,20 @@ vector<vector<int>> cin_matrix(int n, int m)
 void compete_solution()
 {
     int n;
-    cin >> n;
+    cin>>n;
+    //1 2 3
+    //1 2 3
+    //1 2 3
+    //1 2 3 4
+    //4 3 2 1
+    //4 1 2 3
+    //4 3 
+    cout<<2*n-1<<endl;
+    cout<<1<<" "<<1<<" "<<n<<endl;
+    for(int i=2;i<=n;++i){
+        cout<<i<<" "<<1<<" "<<n-i+1<<endl;
+        cout<<i<<" "<<n-i+2<<" "<<n<<endl;
+    }
     
 
 

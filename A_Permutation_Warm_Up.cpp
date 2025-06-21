@@ -72,7 +72,16 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums;
+    for(int i=1;i<=n;++i){
+        nums.push_back(i);
+    }
+    reverse(nums.begin(),nums.end());
+    int sum=0;
+    for(int i=0;i<nums.size();++i){
+        sum+=abs(nums[i]-(i+1));
+    }
+    cout<<sum/2+1<<endl;
 
 
 

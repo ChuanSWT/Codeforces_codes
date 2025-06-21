@@ -67,12 +67,29 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 
 
+int checkP(vector<int> nums){
 
+    int val=nums[0];
+
+
+}
 void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums=cin_nums(n);
+    int cnt=0;
+    for(int i=1;i<nums.size();++i){
+        if(abs(nums[i])>abs(nums[0])){
+            ++cnt;
+        }
+    }
+    if(cnt>=(n-1)/2){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
 
 
 

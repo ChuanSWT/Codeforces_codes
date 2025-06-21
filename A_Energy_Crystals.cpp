@@ -72,7 +72,16 @@ void compete_solution()
 {
     int n;
     cin >> n;
-    
+    vector<int> nums(3,0);
+    int cnt=0;
+    while(true){
+        sort(nums.begin(),nums.end());
+        if(nums[0]>=n)
+            break;
+        ++cnt;
+        nums[0]=2*nums[1]+1;
+    }
+    cout<<cnt<<endl;
 
 
 

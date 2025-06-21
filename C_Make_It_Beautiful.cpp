@@ -70,9 +70,30 @@ vector<vector<int>> cin_matrix(int n, int m)
 
 void compete_solution()
 {
-    int n;
-    cin >> n;
-    
+    int n,k;
+    cin>>n>>k;
+    vector<int> nums=cin_nums(n);
+    vector<int> arr;
+    int ans=0;
+    for(int x:nums){
+        for(int i=0;i<63;++i){
+            if(!((1ll<<i)&x)){
+                arr.push_back(1ll<<i);
+            }
+            else{
+                ans+=1;
+            }
+        }
+    }
+    sort(arr.begin(),arr.end());
+    //print(arr);
+    for(int x:arr){
+        if(k<x)
+            break;
+        k-=x;
+        ++ans;
+    }
+    cout<<ans<<endl;
 
 
 
